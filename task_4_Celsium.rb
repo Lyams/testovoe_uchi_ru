@@ -6,8 +6,14 @@ def gets_celsium
   puts 'Пожалуйста, введите градусы по Цельсию'
   gets.chomp
 end
+
 loop do
-  c = gets_celsium.to_i
+  str = gets_celsium
+  unless str.match?(/\-*[\d]+/)
+    puts "Ошибка, надо вводить только числа без букв, отрицательные - допускаются"
+    next
+  end
+  c = str.to_f
   if c < -273.15
     puts 'Температура не может быть ниже абсолютного нуля!'
     next
