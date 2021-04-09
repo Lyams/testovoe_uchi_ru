@@ -9,8 +9,8 @@ end
 
 loop do
   str = gets_celsium
-  unless str.match?(/\-*[\d]+/)
-    puts "Ошибка, надо вводить только числа без букв, отрицательные - допускаются"
+  unless str.match?(/-*\d+/)
+    puts 'Ошибка, надо вводить только числа без букв, отрицательные - допускаются'
     next
   end
   c = str.to_f
