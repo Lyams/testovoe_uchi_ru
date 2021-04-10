@@ -23,19 +23,21 @@ def gets_celsium
 end
 
 def  matches(s)
-  unless s.match?(/-*\d+/)
+  unless s.match?(/^-*\d+/)
     puts 'Ошибка, надо вводить только числа без букв, отрицательные - допускаются'
     return false
+  else
+    return true
   end
-  return true
 end
 
 def  check_existence(s)
   if s < -273.15
-  puts 'Температура не может быть ниже абсолютного нуля!'
-  return false
+    puts 'Температура не может быть ниже абсолютного нуля!'
+    return false
+  else
+    return true
   end
-  return true
 end
 
 def pretty_p(cels, fahr)
@@ -58,7 +60,7 @@ end
 
 loop do
   str = gets_celsium
-  unless str.match?(/-*\d+/)
+  unless str.match?(/^-*\d+/)
     puts 'Ошибка, надо вводить только числа без букв, отрицательные - допускаются'
     next
   end
