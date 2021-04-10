@@ -5,6 +5,7 @@ p arr1.max(2)
 p arr1.min(2)
 
 # "Bicycle", algoritmic way
+# Видно, что и max(2) и min2) будут отличаться в коде только знаками неравенства.
 def max_two(arr)
   m1= arr[0]
   m2 = arr[1]
@@ -20,6 +21,10 @@ def max_two(arr)
   return [m1,m2]
 end
 
+# Hihg order function,
+# where f is comparison lambda
+# В таком варианте мы можем и другие
+# сравнения использовать (например, как srting)
 def order_two(arr, f)
   m1= arr[0]
   m2 = arr[1]
@@ -52,7 +57,7 @@ p max_2(arr1)
 
 # Task 2
 arr2 = [{ a: 1, b: 2, c: 45 }, { d: 123, c: 12 }, { e: 87 }]
-
+#simple_way
 values_arr2 = arr2.map { |hash| hash.values }.flatten
 keys_arr2 = arr2.map { |hash| hash.keys }.flatten
 # if need uniq keys
@@ -63,6 +68,8 @@ p values_arr2
 p keys_arr2
 p summ_values
 p uniq_keys
+
+# algoritmic way
 
 # Task 3
 entry = Hash.new(0)
