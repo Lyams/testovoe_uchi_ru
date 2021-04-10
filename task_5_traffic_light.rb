@@ -1,16 +1,18 @@
-require 'tty-prompt'
+COMMANDS = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
 
-def gets_color(input)
-  cmd = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
-  cmd[input]
+def gets_action(input)
+  COMMANDS[input]
 end
 
-prompt = TTY::Prompt.new
-
 loop do
-  puts 'Ввведите цвет светофора'
-  action = gets_color(gets.chomp.downcase)
-  puts 'Некорректные данные, повторите ввод' if action.nil?
-  puts action
-  break if prompt.yes?('Хотите ли вы выйти?')
+  puts 'Ввведите цвет светофора. Для выхода введите q'
+  choice = gets.chomp.downcase
+  break if choice == 'q'
+  action = gets_action(choice)
+  if action.nil?
+	puts 'Некорректные данные, повторите ввод.'
+	puts "На ваш выбор следующие допустимые цвета: #{COMMANDS.keys.join(", ")}, а для выхода: 'q'"
+    next
+  end  	
+  puts "На выбранный цвет сигнала светофора следует #{action}"
 end
