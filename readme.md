@@ -121,7 +121,11 @@ loop do
   break
 end
 ```
-Но меня он как то не устраивал. Поэтому изменил код, возможно перемудрив:
+При вводе допускается если пользователь введет что-то вроде: 20 C
+Регулярным выражением /^-*\d+/ проверяется, чтобы начало введенного выражения было
+числовым. Сначала минус я хотел ограничить одним знаком или отсутсвием с помощью "?" в
+регулярном выражении, но потом решил, что то — не нужное ограничение.
+Но меня первый вариант как то не устраивал. Поэтому изменил код, возможно перемудрив:
 ```ruby  
 class Temperature
 
@@ -213,6 +217,7 @@ end
 окрашено соотвествующим ему цветом:
 
 ![Пример работы в консоли](https://github.com/Lyams/testovoe_uchi_ru/blob/master/png/task5withPromt.png)
+Файлы с пятым заданием: [task_5_traffic_light_promt.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_5_traffic_light_promt.rb), [task_5_traffic_light.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_5_traffic_light.rb)
 
 ```ruby
 require 'tty-prompt'
