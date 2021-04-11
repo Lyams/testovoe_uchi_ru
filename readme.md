@@ -169,6 +169,7 @@ end
 
 Temperature.new.start
 ```
+Файл с 4 заданием: [task_4_Celsium.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_4_Celsium.rb)
 Отмечу, что неясна необходимая точность и будет ли температура переводиться туда-сюда.
 В редких слчаях может иметь смысл использовать BigDecimal из Std-lib вместо float,
 если возможны проблемы в чём-то схожие с конвертацией денег. Либо наоборот Integer — 
@@ -183,6 +184,53 @@ Temperature.new.start
 > вызова, а ждет следующих запросов c) необязательно, но будет плюсом
 > напишите обработку некорректных данных и добавьте возможность юзеру
 > завершить работу программы
+
+Простой вариант, выход осуществляется через ввод q при ожидани ввода:
+```ruby  
+COMMANDS = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
+
+def gets_action(input)
+  COMMANDS[input]
+end
+
+loop do
+  puts 'Ввведите цвет светофора. Для выхода введите q'
+  choice = gets.chomp.downcase
+  break if choice == 'q'
+
+  action = gets_action(choice)
+  if action.nil?
+    puts 'Некорректные данные, повторите ввод.'
+    puts "На ваш выбор следующие допустимые цвета: #{COMMANDS.keys.join(', ')}, а для выхода: 'q'"
+    next
+  end
+  puts "На выбранный цвет сигнала светофора следует #{action}"
+end
+```
+До этого чуть играл с гемом tty-prompt. Переписал в такой вариант:
+```ruby
+require 'tty-prompt'
+
+ACTION = %w[quit red green yellow]
+
+def gets_color(input)
+  cmd = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
+  cmd[input]
+end
+
+def start_light
+  prompt = TTY::Prompt.new
+  loop do
+    choice = prompt.select('Select color or quit: ', ACTION, filter: true)
+    break if choice == 'quit'
+
+    result = gets_color(choice)
+    prompt.say(result, color: choice.to_sym)
+  end
+end
+
+start_light
+```
 
 
 
