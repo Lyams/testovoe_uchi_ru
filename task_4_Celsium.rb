@@ -1,7 +1,7 @@
 class Temperature
   # Неясна необходимая точность и будет ли температура
   # переводиться туда-сюда. Возможно имеет смысл
-  # использовать BigDecimal из Std-lib вместо float
+  # использовать BigDecimal из Std-lib вместо float,
   # либо наоборот Integer
   def cels_to_fahrenheit(value)
     (9.0 * value) / 5.0 + 32.0
@@ -11,7 +11,7 @@ class Temperature
     str = gets_celsium
     matches(str) ? (c = str.to_f) : raise
     check_existence(c) ? pretty_p(c, cels_to_fahrenheit(c)) : raise
-  rescue StandardError
+  rescue
     retry
   end
 
