@@ -208,21 +208,22 @@ loop do
   puts "На выбранный цвет сигнала светофора следует #{action}"
 end
 ```
-До этого чуть играл с гемом tty-prompt. Переписал в такой вариант:
+До этого чуть играл с гемом tty-prompt. Переписал в такой вариант, где пользователь
+выбирает из списка вариант, а после выбора необходимое действие (стоять, идти, ждать)
+окрашено соотвествующим ему цветом:
 ```ruby
 require 'tty-prompt'
 
-ACTION = %w[quit red green yellow]
+CMD = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
 
 def gets_color(input)
-  cmd = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
-  cmd[input]
+  CMD[input]
 end
 
 def start_light
   prompt = TTY::Prompt.new
   loop do
-    choice = prompt.select('Select color or quit: ', ACTION, filter: true)
+    choice = prompt.select('Select color or quit: ', CMD.keys + ['quit'] , filter: true)
     break if choice == 'quit'
 
     result = gets_color(choice)
