@@ -275,7 +275,7 @@ select COUNT(students.id) from students where students.parent_id is null;
 внешний ключ parent_id есть, а сооствествующего parents.id нет.
 
 Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby,
-привел пример одного из запросов в Ruby коде:
+привел пример применения одного из запросов в Ruby коде:
 ```ruby
 require 'pg'
 conn = PG.connect(dbname: 'postgres', user: 'ilya', password: '1')
@@ -288,7 +288,7 @@ end
 
 По заданиям с запросами 3 файла:
 1. Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
-2. Файл с имитационными дынными, на которых я проверял работу запросов в игрушечном примере используя dbeaver community: [task_dr5_6_seed.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_seed.sql "task_dr5_6_seed.sql")
+2. Файл с имитационными данными, на которых я проверял работу запросов в игрушечном примере используя dbeaver community: [task_dr5_6_seed.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_seed.sql "task_dr5_6_seed.sql")
 3. Пример одного из запросов в Ruby коде: [task_dr5_6.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6.rb "task_dr5_6.rb")
 
 
@@ -299,4 +299,8 @@ end
 > не обязательны, но остаются на ваше усмотрение и желание. Как и
 > стилизация) b) выложить проект на Heroku
 
-Сначала я думал о том, чтобы «прикрутить» gem devise. Так как требовалось с минимальным функционалом с одним автором, то сделал [простой вариант аутентификации автора по этой инструкции](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html). Блог оформлен [отдельным гитхаб репозиторием](https://github.com/Lyams/Uchi_very_simple_blog) и [задеплоен на Heroku](https://simpleblogfortrainee.herokuapp.com/articles). Рюшешчки прикручивать почти не стал (немного бутсрапа в сыром виде), ограничившись валидацией Article.
+Сначала я думал о том, чтобы «прикрутить» gem devise. Так как требовалось
+с минимальным функционалом с одним автором, то сделал
+[простой вариант аутентификации автора по этой инструкции](https://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html). Блог оформлен [отдельным гитхаб репозиторием](https://github.com/Lyams/Uchi_very_simple_blog) и [задеплоен на Heroku](https://simpleblogfortrainee.herokuapp.com/articles).
+Рюшешчки прикручивать почти не стал (немного бутсрапа в сыром виде),
+ограничившись валидацией Article.
