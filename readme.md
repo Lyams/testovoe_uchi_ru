@@ -15,8 +15,7 @@
 По заданиям с запросами 3 файла:
 1. Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
 2. Файл с имитационными дынными, на которых я проверял работу запросов в игрушечном примере используя dbeaver community: [task_dr5_6_seed.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_seed.sql "task_dr5_6_seed.sql")
-3. Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby, привел пример одного из запросов в Ruby коде:[task_dr5_6.rb]
-
+3. Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby, привел пример одного из запросов в Ruby коде: [task_dr5_6.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6.rb "task_dr5_6.rb")
 
 
 
