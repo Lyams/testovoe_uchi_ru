@@ -58,8 +58,8 @@ p max_2(arr1)
 # Task 2
 arr2 = [{ a: 1, b: 2, c: 45 }, { d: 123, c: 12 }, { e: 87 }]
 #simple_way
-values_arr2 = arr2.map { |hash| hash.values }.flatten
-keys_arr2 = arr2.map { |hash| hash.keys }.flatten
+values_arr2 = arr2.flat_map { |hash| hash.values }
+keys_arr2 = arr2.flat_map { |hash| hash.keys }.flatten
 # if need uniq keys
 uniq_keys = keys_arr2.uniq
 summ_values = values_arr2.sum
@@ -69,10 +69,9 @@ p keys_arr2
 p summ_values
 p uniq_keys
 
-# algoritmic way
 
 # Task 3
 entry = Hash.new(0)
 arr3 = [nil, 2, :foo, 'bar', 'foo', 'apple', 'orange', :orange, 45, nil, :foo, :bar, 25, 45, :apple, 'bar', nil]
-arr3.map { |el| entry[el] += 1 }
+arr3.each { |el| entry[el] += 1 }
 p entry
