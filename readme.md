@@ -266,9 +266,14 @@ select COUNT(*) from students where created_at >= '2020-09-02 00:00:00';
 
 ```SQL
 select COUNT(students.id) from students where students.parent_id is NOT null;
-select COUNT(students.id) from students inner join parents on students.parent_id =  parents.id where parents.name = 'Марина';
+select COUNT(students.id) from students inner join parents
+on students.parent_id =  parents.id where parents.name = 'Марина';
 select COUNT(students.id) from students where students.parent_id is null;
 ```
+В последнем запросе (6 c) я ожидаю, что на уровне базы данных, фреймворка
+(например,  в модели/схеме в Ruby-on-Rails) будет контролироваться случай, когда
+внешний ключ parent_id есть, а сооствествующего parents.id нет.
+
 Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby,
 привел пример одного из запросов в Ruby коде:
 ```ruby
