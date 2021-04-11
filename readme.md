@@ -269,11 +269,22 @@ select COUNT(students.id) from students where students.parent_id is NOT null;
 select COUNT(students.id) from students inner join parents on students.parent_id =  parents.id where parents.name = 'Марина';
 select COUNT(students.id) from students where students.parent_id is null;
 ```
+Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby,
+привел пример одного из запросов в Ruby коде:
+```ruby
+require 'pg'
+conn = PG.connect(dbname: 'postgres', user: 'ilya', password: '1')
+
+conn.exec("select COUNT(*) from students where name = 'Иван';") do |result|
+  puts
+  result.each { |row| puts row.values }
+end
+```
 
 По заданиям с запросами 3 файла:
 1. Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
 2. Файл с имитационными дынными, на которых я проверял работу запросов в игрушечном примере используя dbeaver community: [task_dr5_6_seed.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_seed.sql "task_dr5_6_seed.sql")
-3. Так как в требованиях к ТЗ указано, что при выполнении всех заданий использовать Ruby, привел пример одного из запросов в Ruby коде: [task_dr5_6.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6.rb "task_dr5_6.rb")
+3. Пример одного из запросов в Ruby коде: [task_dr5_6.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6.rb "task_dr5_6.rb")
 
 
 
