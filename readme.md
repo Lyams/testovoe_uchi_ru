@@ -200,7 +200,7 @@ def gets_action(input)
 end
 
 loop do
-  puts 'Ввведите цвет светофора. Для выхода введите q'
+  puts 'Ввведите цвет сигнала светофора. Для выхода введите q'
   choice = gets.chomp.downcase
   break if choice == 'q'
 
