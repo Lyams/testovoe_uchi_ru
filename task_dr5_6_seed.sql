@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS students;
-DROP TABLE IF exists parents;
+--seeds DB for excerces 6.
+--DROP TABLE IF EXISTS students;
+--DROP TABLE IF exists parents;
 CREATE TABLE students (
 id int,
 name varchar,
