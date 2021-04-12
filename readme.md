@@ -73,6 +73,7 @@ end
 arr2 = [{ a: 1, b: 2, c: 45 }, { d: 123, c: 12 }, { e: 87 }]
 values_arr2 = arr2.flat_map { |hash| hash.values }
 keys_arr2 = arr2.flat_map { |hash| hash.keys }
+summ_values = values_arr2.sum
 ```
 Алгоритмических вариантов, принципиально отличающихся от простых, я не нашёл,
 не уходя совсем в дебри. Все они получались просто «разворачиванием» с
