@@ -277,6 +277,12 @@ select COUNT(*) from students where name = 'Иван';
 select COUNT(*) from students where created_at >= '2020-09-02 00:00:00';
 ```
 
+```Ruby
+Student.count
+Student.where(name: "Иван").count
+Student.where(created_at Student.where('created_at >= ?', '2020-09-02 00:00:00').count)
+```
+
 > 7) Необязательное задание, но его выполнение будет плюсом. Так же есть
 > таблица parents (см задание 6) id int name varchar created_at datetime
 > a) посчитайте количество студентов с родителями b) посчитайте
@@ -285,8 +291,10 @@ select COUNT(*) from students where created_at >= '2020-09-02 00:00:00';
 
 ```SQL
 select COUNT(students.id) from students where students.parent_id is NOT null;
+
 select COUNT(students.id) from students inner join parents
 on students.parent_id =  parents.id where parents.name = 'Марина';
+
 select COUNT(students.id) from students left join parents
 on students.parent_id = parents.id where parents.id is null;
 ```
