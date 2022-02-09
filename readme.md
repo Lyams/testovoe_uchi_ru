@@ -290,18 +290,24 @@ Student.where(created_at Student.where('created_at >= ?', '2020-09-02 00:00:00')
 > посчитайте количество студентов без родителя
 
 ```SQL
-select COUNT(students.id) from students where students.parent_id is NOT null;
+select COUNT(*) from students where students.parent_id is NOT null;
 
-select COUNT(students.id) from students inner join parents
+select COUNT(*) from students inner join parents
 on students.parent_id =  parents.id where parents.name = 'Марина';
 
-select COUNT(students.id) from students left join parents
-on students.parent_id = parents.id where parents.id is null;
+select COUNT(*) from students where students.parent_id is NOT null;
 ```
 
-По заданиям с запросами 3 файла:
-1. Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
-2. Файл с имитационными данными, на которых я проверял работу запросов в игрушечном примере используя dbeaver community: [task_dr5_6_seed.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_seed.sql "task_dr5_6_seed.sql")
+```Ruby
+Student.where.not(parent_id: nil).count
+
+Student.join(:parents).where( parents: { name: 'Марина'} ).count
+
+Student.where(parent_id: nil).count
+
+```
+
+Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
 
 
 > 8) Необязательная, но выполнение будет очень большим плюсом a)Напишите
@@ -310,8 +316,9 @@ on students.parent_id = parents.id where parents.id is null;
 > не обязательны, но остаются на ваше усмотрение и желание. Как и
 > стилизация) b) выложить проект на Heroku
 
-Сначала я думал о том, чтобы «прикрутить» gem devise. Так как требовалось
-с минимальным функционалом без обязательной аутентификации/авторизации, то
-сделал простой вариант (если будет время до проверки - еще поразвиваю его).
+Сначала я думал о том, чтобы «прикрутить» gem devise.
+А потом понял, что требуется чуть ли не простой вариант из вводного официального руководства.
+Так как требовалось с минимальным функционалом без обязательной аутентификации/авторизации,
+то сделал простой вариант (если будет время до проверки - еще поразвиваю его).
 Блог оформлен [отдельным гитхаб репозиторием](https://github.com/Lyams/forUchiRuBlog) и [задеплоен на Heroku](https://for-uchi-ru-product.herokuapp.com/).
 Рюшешчки прикручивать пока не стал, ограничившись валидацией и небольшим количеством тестов с CI/CD.
