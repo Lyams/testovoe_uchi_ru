@@ -83,12 +83,27 @@ summ_values = values_arr2.sum
 > “foo”, “apple”, “orange”, :orange, 45, nil, :foo, :bar, 25, 45,
 > :apple, “bar”, nil] чтобы на выходе получился Hash по типу { элемент
 > => количество вхождений в массив}
+В версиях Ruby до 2.6 включительно:
 
 ```ruby
-entry = Hash.new(0)
 arr3 = [nil, 2, :foo, 'bar', 'foo', 'apple', 'orange', :orange, 45, nil, :foo, :bar, 25, 45, :apple, 'bar', nil]
-arr3.each { |el| entry[el] += 1 }
+arr3.each_with_object( Hash.new(0) ) { |el, obj| obj[el] += 1 }
 ```
+Начиная с Ruby 2.7 появился метод tally с той же функциональностью:
+
+```ruby
+arr3.tally
+```
+
+если же изобретать велосипед, то можно так:
+
+```ruby
+acc = Hash.new(0)
+until arr3.empty? do
+  acc[ arr3.pop ] += 1
+end
+```
+
 > 4) Напишите функцию a) которая переводит градусы по Цельсию в градусы
 > по Фаренгейту (формулу нужно найти в интернете) b) напишите консольную
 > программу, которая просит юзера ввести число (градусы по Цельсию) и
