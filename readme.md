@@ -214,7 +214,8 @@ Temperature.new.start
 ```ruby  
 COMMANDS = { 'red' => 'стоять', 'green' => 'идти', 'yellow' => 'ждать' }
 
-def gets_action(input)
+# Функция задания а (вместе с константой COMMANDЫ)
+def gets_action(input) 
   COMMANDS[input]
 end
 
