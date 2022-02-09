@@ -72,7 +72,18 @@ p summ_values
 p uniq_keys
 
 # Task 3
-entry = Hash.new(0)
+
 arr3 = [nil, 2, :foo, 'bar', 'foo', 'apple', 'orange', :orange, 45, nil, :foo, :bar, 25, 45, :apple, 'bar', nil]
-arr3.each { |el| entry[el] += 1 }
-p entry
+
+# varinant 1
+arr3.each_with_object( Hash.new(0) ) { |el, obj| obj[el] += 1 }
+
+# variant 2
+arr3.tally
+
+#variant 3
+acc = Hash.new(0)
+until arr3.empty? do
+  acc[ arr3.pop ] += 1
+end
+p acc

@@ -295,7 +295,7 @@ select COUNT(*) from students where students.parent_id is NOT null;
 select COUNT(*) from students inner join parents
 on students.parent_id =  parents.id where parents.name = 'Марина';
 
-select COUNT(*) from students where students.parent_id is NOT null;
+select COUNT(*) from students where students.parent_id is null;
 ```
 
 ```Ruby
@@ -307,7 +307,7 @@ Student.where(parent_id: nil).count
 
 ```
 
-Файл с запросами на SQL: [task_dr5_6_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
+Файл с запросами на SQL: [task_dr6_7_query.sql](https://github.com/Lyams/testovoe_uchi_ru/blob/master/task_dr5_6_query.sql "task_dr5_6_query.sql")
 
 
 > 8) Необязательная, но выполнение будет очень большим плюсом a)Напишите
