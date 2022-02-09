@@ -83,6 +83,8 @@ summ_values = values_arr2.sum
 > “foo”, “apple”, “orange”, :orange, 45, nil, :foo, :bar, 25, 45,
 > :apple, “bar”, nil] чтобы на выходе получился Hash по типу { элемент
 > => количество вхождений в массив}
+
+
 В версиях Ruby до 2.6 включительно:
 
 ```ruby
