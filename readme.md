@@ -115,7 +115,7 @@ end
 
 Сначала я написал такой работающий вариант:
 ```ruby
-def cels_to_fahrenheit(value)
+def cels_to_fahrenheit(value) # Функция задания а
    (9 * value) / 5.0 + 32.0
 end
 
