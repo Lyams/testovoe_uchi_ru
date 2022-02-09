@@ -71,6 +71,24 @@ p keys_arr2
 p summ_values
 p uniq_keys
 
+# Повелосипедим
+def vse(pologenie, arr_input)
+  arr = arr_input.clone
+  arr.each_with_object([]) do |el,obj|
+    until el.empty? do
+      obj.push(el.shift[pologenie])
+    end
+  end
+end
+
+def all_keys (arr)
+  vse(0, arr)
+end
+
+def all_values (arr)
+  vse(1,arr)
+end
+
 # Task 3
 
 arr3 = [nil, 2, :foo, 'bar', 'foo', 'apple', 'orange', :orange, 45, nil, :foo, :bar, 25, 45, :apple, 'bar', nil]
@@ -83,7 +101,8 @@ arr3.tally
 
 #variant 3
 acc = Hash.new(0)
-until arr3.empty? do
-  acc[ arr3.pop ] += 1
+arr_opustoshaemii = arr3.clone
+until arr_opustoshaemii.empty? do
+  acc[ arr_opustoshaemii.pop ] += 1
 end
 p acc

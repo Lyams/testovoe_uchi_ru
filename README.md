@@ -9,12 +9,15 @@
 Первое, второе и третье задания в одном файле: [tasks_1_2_3.rb](https://github.com/Lyams/testovoe_uchi_ru/blob/master/tasks_1_2_3.rb)
 
 Использование простых библиотечных методов:
+
 ```ruby
 arr1 = [1, 2, 12, 34, 35, 6, 0, 34, 122, 124, 789, 999, 33, 54, 763, 893]
 arr1.max(2)
 arr1.min(2)
 ```
+
 Если попробовать написать такую функцию самому, то у меня получилось такое для варианта возвращения двух максимальных значений:
+
 ```ruby
 def max_two(arr)
   m1 = arr[0]
@@ -31,7 +34,9 @@ def max_two(arr)
   [m1, m2]
 end
 ```
+
 Несложно заметить, что функция, возвращающая два минимальных значения, будет отличаться от max_two только несколько раз повторяющимся знаком неравенства. Поэтому я написал функцию высшего порядка, принимающей вторым агрументом функцию сравнения (Proc lambda). Т.о. order_two мы можем использовать для сравнения по нужному критерию (например, сравнивая как строки и т.п.) с возвращением двух значений.
+
 ```ruby
 def order_two(arr, f)
   m1 = arr[0]
@@ -50,7 +55,9 @@ def order_two(arr, f)
   [m1, m2]
 end
 ```
+
 Тогда искомые функции:
+
 ```ruby
 def min_2(arr)
   sravni = ->(x, y) { x < y }
@@ -76,8 +83,27 @@ keys_arr2 = arr2.flat_map { |hash| hash.keys }
 summ_values = values_arr2.sum
 ```
 Алгоритмических вариантов, принципиально отличающихся от простых, я не нашёл,
-не уходя совсем в дебри. Все они получались просто «разворачиванием» с
-использованием each и map.
+не уходя совсем в дебри. Вот достаточно "далёкий" вариант для a и b:
+
+```ruby
+def vse(pologenie, arr_input)
+  arr = arr_input.clone
+  arr.each_with_object([]) do |el,obj|
+    until el.empty? do
+      obj.push( el.shift[pologenie] )
+    end
+  end
+end
+
+def all_keys (arr)
+  vse(0, arr)
+end
+
+def all_values (arr)
+  vse(1,arr)
+end
+```
+
 
 > 3) Найдите вхождения каждого элемента в массив [ nil, 2, :foo, “bar”,
 > “foo”, “apple”, “orange”, :orange, 45, nil, :foo, :bar, 25, 45,
@@ -101,8 +127,9 @@ arr3.tally
 
 ```ruby
 acc = Hash.new(0)
-until arr3.empty? do
-  acc[ arr3.pop ] += 1
+arr_opustoshaemii = arr3.clone
+until arr_opustoshaemii.empty? do
+  acc[ arr_opustoshaemii.pop ] += 1
 end
 ```
 
@@ -280,7 +307,7 @@ select COUNT(*) from students where created_at >= '2020-09-02 00:00:00';
 ```Ruby
 Student.count
 Student.where(name: "Иван").count
-Student.where(created_at Student.where('created_at >= ?', '2020-09-02 00:00:00').count)
+Student.where(created_at Student.where('created_at >= ?', '2020-09-02 00:00:00').count
 ```
 
 > 7) Необязательное задание, но его выполнение будет плюсом. Так же есть
