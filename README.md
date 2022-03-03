@@ -60,13 +60,13 @@ end
 
 ```ruby
 def min_2(arr)
-  sravni = ->(x, y) { x < y }
-  order_two(arr, sravni)
+  collation = ->(x, y) { x < y }
+  order_two(arr, collation)
 end
 
 def max_2(arr)
-  sravni = ->(x, y) { x > y }
-  order_two(arr, sravni)
+  collation = ->(x, y) { x > y }
+  order_two(arr, collation)
 end
 ```
 > 2) Есть массив
@@ -86,11 +86,11 @@ summ_values = values_arr2.sum
 не уходя совсем в дебри. Вот достаточно "далёкий" вариант для a и b:
 
 ```ruby
-def vse(pologenie, arr_input)
+def vse(position, arr_input)
   arr = arr_input.clone
   arr.each_with_object([]) do |el,obj|
     until el.empty? do
-      obj.push( el.shift[pologenie] )
+      obj.push( el.shift[position] )
     end
   end
 end
@@ -127,9 +127,9 @@ arr3.tally
 
 ```ruby
 acc = Hash.new(0)
-arr_opustoshaemii = arr3.clone
-until arr_opustoshaemii.empty? do
-  acc[ arr_opustoshaemii.pop ] += 1
+arr_raid = arr3.clone
+until arr_raid.empty? do
+  acc[ arr_raid.pop ] += 1
 end
 ```
 
